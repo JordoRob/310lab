@@ -13,6 +13,9 @@ class gui implements ActionListener {
     static boolean askedHowAreYouFeeling = false;
     static boolean askedDoctor = false;
     static boolean askedName = false;
+    static boolean safetyQuestion=false;
+    static boolean danger = false;
+    static boolean hobby = false;
     static int responsesTillDoctor = 0;
     public static void main(String args[]) {
 
@@ -95,20 +98,21 @@ class gui implements ActionListener {
             }
         }
 
-        if(a.contains("lonely") || a.contains("depressed") || a.contains("sad") || a.contains("not") && (a.contains("good") || a.contains("happy"))){
+        if(a.contains("lonely") || a.contains("depressed") || a.contains("sad") || a.contains("not") && (a.contains("good") || a.contains("happy"))||a.contains("bad")){
             
             int amtResponse = 3;
             int randNum = rand.nextInt(amtResponse);
+            askedName = true;
             switch (randNum) {
                 case 0:
-                    return "Oh and what has been making you feel this way?";
+                    return "Oh that must be really tough, before we continue may I get your name?";
                 case 1:
-                    return "I'm sorry to hear that do you want to talk about it?";
+                    return "I'm sorry to hear that! Before we discuss this, can I get your name?";
                 case 2:
-                    return "I understand how you are feeling, let's talk about it.";
+                    return "I understand how you are feeling, before we talk about it can I get your name?";
                 default:
                     return "OUT OF BOUNDS?!";
-            }
+            }  
         }
 
         if(a.contains("good")){
@@ -154,7 +158,32 @@ class gui implements ActionListener {
 
         if (askedName == true || (a.contains("my") && a.contains("name"))){
             askedName = false;
-            return "Thats an amazing name!";
+            safetyQuestion=true;
+            String temp = "Thats an amazing name!\n" + "Before we continue are you a danger to yourself or anyone around you?";
+            return temp;
+            
+        }
+        if(safetyQuestion=true&& a.contains("yes")){
+            safetyQuestion=false;
+            danger=true;
+            return "We recommend you dial your local emergency line, they will help you.\n Your local emergency line is xxx";
+        }
+        if(danger==true&&a.contains("no")){
+            danger=false;
+            return "I am still here for you, however I strongly urge you to contact emergency services";
+            
+        } else if (danger==true) return "They will help you from here on out. Have a good night.";
+        if(safetyQuestion=true&&a.contains("no")){
+            safetyQuestion=false;
+            hobby=true;
+            return "Good to hear :)\n So... What do you do with your free time?";
+        }
+        if (hobby==true&&(a.contains("nothing")||a.contains("know"))){
+            hobby=false;
+            return("oh im sorry to hear that, have you been feeling that way for a while?");
+        } else if(hobby==true){
+            hobby=false;
+            return("Oh that sounds interesting! How long have you been doing that (years)");
         }
 
         if (a.contains("bye") || a.contains("go") || a.contains("leave")){
