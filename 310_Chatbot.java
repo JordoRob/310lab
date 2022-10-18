@@ -159,8 +159,8 @@ class gui implements ActionListener {
         if (askedName == true || (a.contains("my") && a.contains("name"))){
             askedName = false;
             safetyQuestion=true;
-            String temp = "Thats an amazing name!\n" + "Before we continue are you a danger to yourself or anyone around you?";
-            return temp;
+            return "Thats an amazing name!\n Before we continue are you a danger to yourself or anyone around you?";
+             
             
         }
         if(safetyQuestion=true&& a.contains("yes")){
@@ -172,7 +172,7 @@ class gui implements ActionListener {
             danger=false;
             return "I am still here for you, however I strongly urge you to contact emergency services";
             
-        } else if (danger==true) return "They will help you from here on out. Have a good night.";
+        } if (danger==true&&!a.contains("no")) return "They will help you from here on out. Well wishes.";
         if(safetyQuestion=true&&a.contains("no")){
             safetyQuestion=false;
             hobby=true;
@@ -181,7 +181,8 @@ class gui implements ActionListener {
         if (hobby==true&&(a.contains("nothing")||a.contains("know"))){
             hobby=false;
             return("oh im sorry to hear that, have you been feeling that way for a while?");
-        } else if(hobby==true){
+        } 
+        if(hobby==true&&!(a.contains("nothing")||a.contains("know"))){
             hobby=false;
             return("Oh that sounds interesting! How long have you been doing that (years)");
         }
