@@ -38,6 +38,7 @@ class gui implements ActionListener {
         m2.add(m22);
 
         //Creating the panel at bottom and adding components
+        
         JPanel panel = new JPanel(); // the panel is not visible in output
         JLabel label = new JLabel("Enter Text");
         JTextField tf = new JTextField(20); // accepts upto 10 characters
@@ -50,11 +51,13 @@ class gui implements ActionListener {
         // Text Area at the Center
         JTextArea ta = new JTextArea();
         ta.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(ta);
+    
 
         //Adding Components to the frame
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
-        frame.getContentPane().add(BorderLayout.CENTER, ta);
+        frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
         frame.setVisible(true);
         tf.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent arg0){  
@@ -80,7 +83,7 @@ class gui implements ActionListener {
          */
         responsesTillDoctor++;
         // Hello check || Make sure not asking how they are
-        if((a.contains("hello") || a.contains("hi") || a.contains("hey")) && !a.contains("how")){
+        if((a.contains("hello") || a.contains("hi") || a.contains("hey")) && !a.contains("how")&&askedHowAreYou==false){
             askedHowAreYou = true;
             return "Hello! How are you?";
         }
@@ -160,8 +163,6 @@ class gui implements ActionListener {
             askedName = false;
             safetyQuestion=true;
             return "Thats an amazing name!\n Before we continue are you a danger to yourself or anyone around you?";
-             
-            
         }
         if(safetyQuestion=true&& a.contains("yes")){
             safetyQuestion=false;
@@ -173,16 +174,17 @@ class gui implements ActionListener {
             return "I am still here for you, however I strongly urge you to contact emergency services";
             
         } if (danger==true&&!a.contains("no")) return "They will help you from here on out. Well wishes.";
+        
         if(safetyQuestion=true&&a.contains("no")){
             safetyQuestion=false;
             hobby=true;
             return "Good to hear :)\n So... What do you do with your free time?";
         }
-        if (hobby==true&&(a.contains("nothing")||a.contains("know"))){
+        if (hobby==true&&a.contains("nothing")){
             hobby=false;
             return("oh im sorry to hear that, have you been feeling that way for a while?");
         } 
-        if(hobby==true&&!(a.contains("nothing")||a.contains("know"))){
+        if(hobby==true&&!(a.contains("nothing"))){
             hobby=false;
             return("Oh that sounds interesting! How long have you been doing that (years)");
         }
