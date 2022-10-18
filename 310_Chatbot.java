@@ -5,10 +5,20 @@ import javax.lang.model.util.ElementScanner6;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 class gui implements ActionListener {
-
-
+    
+    // CHATBOT VARS
+    static boolean askedHowAreYou = false;
+    static boolean askedHowAreYouFeeling = false;
+    static boolean askedDoctor = false;
+    static boolean askedName = false;
+    static int responsesTillDoctor = 0;
     public static void main(String args[]) {
+
+        
+        // Rand num gen
+        Random rand = new Random();
 
         //Creating the Frame
         JFrame frame = new JFrame("Unlonley");
@@ -49,29 +59,107 @@ class gui implements ActionListener {
             public void actionPerformed(ActionEvent arg0){  
                String a = tf.getText();
                ta.append("You: " + a + "\n\n");
-               String b = response(a.toLowerCase());
+               String b = response(a.toLowerCase(), rand);
             ta. append("Mr.Lonely: "+ b + "\n\n");
                tf.setText("");
-    }
+            }
 
    
-});}
+    });}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-public static String response(String a){
+    public static String response(String a, Random rand){
+        responsesTillDoctor++;
+        // Hello check || Make sure not asking how they are
+        if((a.contains("hello") || a.contains("hi") || a.contains("hey")) && !a.contains("how")){
+            askedHowAreYou = true;
+            return "Hello! How are you?";
+        }
 
-if(a.contains("hi")||a.contains("hello")||a.contains("hey")||a.contains("yo")||a.contains("howdy")){
-    return("Hi there! How are you?");
-   } else if(a.contains("good")&&!a.contains("not good")){
-    return("Im glad to hear it, do you feel lonely today?");
-   }  else return("Sorry I did not understand");
+        // how are you check
+        // askedHowAreYou is a boolean that is true if you askedHowAreYou
+        // askedHowAreYouFeeling is a boolean that is true if you askedHowAreYouFeeling
+        if(a.contains("how are you")){
+            if(askedHowAreYou == true){
+                askedHowAreYouFeeling = true;
+                return "I am good! How have you been feeling lately?";
+            } else {
+                askedHowAreYou = true;
+                return "I am good, how are you?";
+            }
+        }
 
+        if(a.contains("lonely") || a.contains("depressed") || a.contains("sad") || a.contains("not") && (a.contains("good") || a.contains("happy"))){
+            
+            int amtResponse = 3;
+            int randNum = rand.nextInt(amtResponse);
+            switch (randNum) {
+                case 0:
+                    return "Oh and what has been making you feel this way?";
+                case 1:
+                    return "I'm sorry to hear that do you want to talk about it?";
+                case 2:
+                    return "I understand how you are feeling, let's talk about it.";
+                default:
+                    return "OUT OF BOUNDS?!";
+            }
+        }
 
+        if(a.contains("good")){
+            int amtResponse = 2;
+            int randNum = rand.nextInt(amtResponse);
+            switch (randNum) {
+                case 0:
+                    return "I'm glad to hear that.";
+                case 1:
+                    return "Oh thats good!";
+                default:
+                    return "OUT OF BOUNDS?!";
+            }
+        }
 
-}
+        if (a.contains("thank")){
+            int amtResponse = 2;
+            int randNum = rand.nextInt(amtResponse);
+            switch (randNum) {
+                case 0:
+                    return "You're welcome.";
+                case 1:
+                    return "No Worries.";
+                default:
+                    return "OUT OF BOUNDS?!";
+            }
+        }
+
+        if (a.contains("death") || a.contains("suicide") || a.contains("kill")){
+            responsesTillDoctor = 0;
+            askedDoctor = true;
+            return "I think we should talk about this in person do you want me to recommend you to a doctor?";
+        }
+
+        if (a.contains("yes") && responsesTillDoctor == 1 && askedDoctor == true){
+            return "Ok here is the details xxxx.xxxx at xxxx on xxx at xxx";
+        }
+
+        if (a.contains("name") && !a.contains("my")){
+            askedName = true;
+            return "My name is Unlonely what's yours?";
+        }
+
+        if (askedName == true || (a.contains("my") && a.contains("name"))){
+            askedName = false;
+            return "Thats an amazing name!";
+        }
+
+        if (a.contains("bye") || a.contains("go") || a.contains("leave")){
+            return "Bye! Talk again soon?";
+        }
+
+        return "Sorry I did not understand. Can you say it in a different way?";
+    }
 }
 
