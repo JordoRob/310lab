@@ -39,11 +39,9 @@ class gui implements ActionListener {
         JLabel label = new JLabel("Enter Text");
         JTextField tf = new JTextField(20); // accepts upto 10 characters
         JButton send = new JButton("Send");
-        JButton reset = new JButton("Reset");
         panel.add(label); // Components Added using Flow Layout
         panel.add(tf);
         panel.add(send);
-        panel.add(reset);
         
 
         // Text Area at the Center
@@ -73,6 +71,10 @@ class gui implements ActionListener {
 		
 	}
     public static String response(String a, Random rand){
+        /* 
+         * RESPONSES: NO FRIENDS, HOW LONG HAVE YOU BEEN FEELING THIS WAY, 
+         * 
+         */
         responsesTillDoctor++;
         // Hello check || Make sure not asking how they are
         if((a.contains("hello") || a.contains("hi") || a.contains("hey")) && !a.contains("how")){
