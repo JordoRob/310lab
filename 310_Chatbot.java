@@ -186,14 +186,14 @@ class gui implements ActionListener {
             hobby=false;
             return("Oh im sorry to hear that, have you been feeling that way for a while?");
         }
-	if (hobby==true&&(a.contains("snowboarding")||a.contains("skiing")||a.contains("snowboard")||a.contains("ski"){
+	if (hobby==true&&(a.contains("snowboarding")||a.contains("skiing")||a.contains("snowboard")||a.contains("ski"))){
             hobby=false;
             return("No way that's awesome! I love the mountains too that's a good way to clear your mind. Where do you like to go?");
         }
-	if (a.contains("big white")||a.contains("silver star") {
+	if (a.contains("big white")||a.contains("silver star")) {
 	    return("Oh that's so cool I love it there!");
 	}
-	if (hobby==true&&(a.contains("netflix")||a.contains("smoke")||a.contains("video games")||a.contains("tv"){
+	if (hobby==true&&(a.contains("netflix")||a.contains("smoke")||a.contains("video games")||a.contains("tv"))){
             hobby=false;
             return("Those are definitely fun hobbies, but if you've been feeling down you should try to find a hobby that gets you active!");
         }
