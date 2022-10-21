@@ -1,7 +1,6 @@
 
 //Usually you will require both swing and awt packages
 // even if you are working with just swings.
-import javax.lang.model.util.ElementScanner6;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -78,19 +77,29 @@ class gui implements ActionListener {
 	}
     public static String response(String a, Random rand){
         /* 
-         * RESPONSES: NO FRIENDS, HOW LONG HAVE YOU BEEN FEELING THIS WAY, 
+         * RESPONSES: HOW LONG HAVE YOU BEEN FEELING THIS WAY, 
          * 
          */
         responsesTillDoctor++;
-        // Hello check || Make sure not asking how they are
+
+
+        /* 
+         * Hello Check
+         * Only will ask how are you once
+         */
         if((a.contains("hello") || a.contains("hi") || a.contains("hey")) && !a.contains("how")&&askedHowAreYou==false){
-            askedHowAreYou = true;
-            return "Hello! How are you?";
+            
+            if (askedHowAreYou == false){
+                askedHowAreYou = true;
+                return "Hello! How are you?";
+            }         
+            return "Hello!";
         }
 
-        // how are you check
-        // askedHowAreYou is a boolean that is true if you askedHowAreYou
-        // askedHowAreYouFeeling is a boolean that is true if you askedHowAreYouFeeling
+        /*
+         * How are you check
+         * Only will ask how are you feeling / how are you once
+         */
         if(a.contains("how are you")){
             if(askedHowAreYou == true){
                 askedHowAreYouFeeling = true;
@@ -101,6 +110,10 @@ class gui implements ActionListener {
             }
         }
 
+        /*
+         * Not feeling good check
+         * Random responses
+         */
         if(a.contains("lonely") || a.contains("depressed") || a.contains("sad") || a.contains("not") && (a.contains("good") || a.contains("happy"))||a.contains("bad")){
             
             int amtResponse = 4;
@@ -120,7 +133,11 @@ class gui implements ActionListener {
             }  
         }
 
-        if(a.contains("good")){
+        /*
+         * Feeling good check
+         * Random Responses
+         */
+        if(a.contains("good") || a.contains("happy")){
             int amtResponse = 2;
             int randNum = rand.nextInt(amtResponse);
             switch (randNum) {
@@ -133,6 +150,10 @@ class gui implements ActionListener {
             }
         }
 
+        /*
+         * Thank you check
+         * Random Responses
+         */
         if (a.contains("thank")){
             int amtResponse = 2;
             int randNum = rand.nextInt(amtResponse);
@@ -146,62 +167,126 @@ class gui implements ActionListener {
             }
         }
 
+        /*
+         * High danger check
+         * If they respond with yes after they will be sent the message  "Ok here is the details xxxx.xxxx at xxxx on xxx at xxx"
+         */
         if (a.contains("death") || a.contains("suicide") || a.contains("kill")){
             responsesTillDoctor = 0;
             askedDoctor = true;
+            danger = true;
             return "I think we should talk about this in person do you want me to recommend you to a doctor?";
         }
 
+        /*
+         * Continuation of high danger check 
+         */
         if (a.contains("yes") && responsesTillDoctor == 1 && askedDoctor == true){
             return "Ok here is the details xxxx.xxxx at xxxx on xxx at xxx";
         }
 
+        /*
+         * Asking for chatbot name check
+         */
         if (a.contains("name") && !a.contains("my")){
             askedName = true;
             return "My name is Unlonely what's yours?";
         }
 
+        /*
+         * Responding to users name
+         * Askes safety question to keep conversation going
+         */
         if (askedName == true || (a.contains("my") && a.contains("name"))){
             askedName = false;
             safetyQuestion=true;
             return "Thats an amazing name!\n Before we continue, do you feel you are a danger to yourself or anyone around you?";
         }
+
+        /*
+         * Danger and yes check
+         * If safetyQuestion has been asked and user responds yes danger = true
+         * Recommedns user to call local emergency
+         */
         if(safetyQuestion=true&& a.contains("yes")){
             safetyQuestion=false;
             danger=true;
             return "We recommend you dial your local emergency line, they will help you.\n Your local emergency line is xxx";
         }
+
+        /*
+         * Danger and no check
+         * If user declines calling local services danger is set to false
+         */
         if(danger==true&&a.contains("no")){
             danger=false;
             return "I am still here for you, however I strongly urge you to contact emergency services";
             
-        } if (danger==true&&!a.contains("no")) return "They will help you from here on out. Well wishes.";
+        } 
+
+        /*
+         * If user does not say no chat bot exits conversation 
+         */
+        if (danger==true&&!a.contains("no")) return "They will help you from here on out. Well wishes.";
         
+        /*
+         * 
+         * User is safe and then chatbot prompts user to talk about hobbies
+         * Set hobby to true
+         */
         if(safetyQuestion=true&&a.contains("no")){
             safetyQuestion=false;
             hobby=true;
             return "Good to hear :)\n So... What do you do with your free time?";
         }
+        
+        /*
+         * No friends check
+         */
+        if(a.contains("friend") && a.contains("no")){
+            return "Dont worry I am your friend!";
+        }
+
+        /*
+         * No hobbies check
+         */
         if (hobby==true&&a.contains("nothing")){
             hobby=false;
             return("Oh im sorry to hear that, have you been feeling that way for a while?");
         }
-	if (hobby==true&&(a.contains("snowboarding")||a.contains("skiing")||a.contains("snowboard")||a.contains("ski"))){
+
+        /*
+         * Start Hobbies
+         */
+        if (hobby==true&&(a.contains("snowboarding")||a.contains("skiing")||a.contains("snowboard")||a.contains("ski"))){
             hobby=false;
             return("No way that's awesome! I love the mountains too that's a good way to clear your mind. Where do you like to go?");
         }
-	if (a.contains("big white")||a.contains("silver star")) {
-	    return("Oh that's so cool I love it there!");
-	}
-	if (hobby==true&&(a.contains("netflix")||a.contains("smoke")||a.contains("video games")||a.contains("tv"))){
+
+        if (a.contains("big white")||a.contains("silver star")) {
+            return("Oh that's so cool I love it there!");
+        }
+
+        if (hobby==true&&(a.contains("netflix")||a.contains("smoke")||a.contains("video games")||a.contains("tv"))){
             hobby=false;
             return("Those are definitely fun hobbies, but if you've been feeling down you should try to find a hobby that gets you active!");
+        }
+        
+        if (hobby == true && a.contains("friend") && !a.contains("no")){
+            hobby = false;
+            return("I love being with friends too!");
         }
         if(hobby==true&&!(a.contains("nothing"))){
             hobby=false;
             return("Oh that sounds interesting! How long have you been doing that (years)");
         }
+        /*
+         * End Hobbies
+         */
 
+        /*
+         * User leaving check
+         */
         if (a.contains("bye") || a.contains("go") || a.contains("leave")){
             return "Bye! It was very nice talking to you, feel free to come say hi anytime :)";
         }
