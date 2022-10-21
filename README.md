@@ -38,7 +38,16 @@ We chose to use Agile Scrum as it will allow us to work quickly through a featur
     - What can be improved
         - For later use in individual projects
 
+### **Limitations of the project**
+    - Can only respond to certain messages
+    - Messages must be simple as the bot only knows keywords
+    - Can only respond with canned responses
+    - Bot eventually stops where you can only repeat what you've done already
+    - Current prototype does not provide actual contact information of mental health professionals
+    
+
 ### **Charts and Structures:**
 [Gant Chart](https://app.asana.com/read-only/COSC310-Assignment-2-(CHATBOT)/1191351854255875/b44a2272681556ed28b269e3abf307dd/timeline)
+[WBS]()
 
 
