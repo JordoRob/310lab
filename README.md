@@ -38,16 +38,49 @@ We chose to use Agile Scrum as it will allow us to work quickly through a featur
     - What can be improved
         - For later use in individual projects
 
-### **Limitations of the project**
-    - Can only respond to certain messages
-    - Messages must be simple as the bot only knows keywords
-    - Can only respond with canned responses
-    - Bot eventually stops where you can only repeat what you've done already
-    - Current prototype does not provide actual contact information of mental health professionals
-    
+### **Task Assignments:**
+-	UI Creation (Jordan)
+    -	Hour Estimation: 4 hours
+    -   Actual Hours: 2.5 hours
 
-### **Charts and Structures:**
+-   Chatbot Programming (Kael)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 3 hours
+
+-	Chatbot Programming (Jack)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 3 hours
+
+-	Chatbot Programming (Jordan)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 3 hours
+
+-	Gantt Chart Creation (Jordan)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 1 hour
+
+-	WBS Creation (Jack)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 2 hours
+
+-	Code Testing (Jordan, Kael, Jack)
+    -	Hour Estimation: 2 hours
+    -	Actual Hours: 2 hours
+
+### **Limitations of the project**
+
+- Can only respond to certain messages
+- Messages must be simple as the bot only knows keywords
+- Can only respond with canned responses
+- Bot eventually stops where you can only repeat what you've done already
+- Current prototype does not provide actual contact information of mental health professionals
+
+## **Charts and Structures:**
 [Gant Chart](https://app.asana.com/read-only/COSC310-Assignment-2-(CHATBOT)/1191351854255875/b44a2272681556ed28b269e3abf307dd/timeline)
-[WBS]()
+
+WBS
+
+![WBS Structure](./images/WBS.jpg)
+
 
 
