@@ -83,4 +83,8 @@ WBS
 ![WBS Structure](./images/WBS.jpg)
 
 
+JIRA
+
+![Jira picture](./images/jira.jpg)
+
 
