@@ -208,7 +208,7 @@ class gui implements ActionListener {
          * If safetyQuestion has been asked and user responds yes danger = true
          * Recommedns user to call local emergency
          */
-        if(safetyQuestion=true&& a.contains("yes")){
+        if(safetyQuestion==true&& a.contains("yes")){
             safetyQuestion=false;
             danger=true;
             return "We recommend you dial your local emergency line, they will help you.\n Your local emergency line is xxx";
@@ -234,7 +234,7 @@ class gui implements ActionListener {
          * User is safe and then chatbot prompts user to talk about hobbies
          * Set hobby to true
          */
-        if(safetyQuestion=true&&a.contains("no")){
+        if(safetyQuestion==true && a.contains("no")){
             safetyQuestion=false;
             hobby=true;
             return "Good to hear :)\n So... What do you do with your free time?";
