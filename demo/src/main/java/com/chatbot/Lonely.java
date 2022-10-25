@@ -24,7 +24,7 @@ public class Lonely {
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
         System.out.println(path);
-        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+        String resourcesPath = path + File.separator +"demo"+File.separator+ "src" + File.separator + "main" + File.separator + "resources";
         return resourcesPath;
     }
     }
