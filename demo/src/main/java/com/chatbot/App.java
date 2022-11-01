@@ -34,12 +34,17 @@ public Chat chatSession;
 								"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
 										+ ":TOPIC=" + chatSession.predicates.get("topic"));
 					String response = chatSession.multisentenceRespond(request);
+					if(response.contains("CHATTIME")){
+						newBot("super", response);
+						
+					}
+					else{
 					while (response.contains("&lt;"))
 						response = response.replace("&lt;", "<");
 					while (response.contains("&gt;"))
 						response = response.replace("&gt;", ">");
                         gui.setText("Mr.Lonely: "+ response + "\n\n");
-				}	
-				gui.tf.setText("");
+					}
+				gui.tf.setText("");}
 	}
 		}

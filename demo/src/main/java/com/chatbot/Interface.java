@@ -38,9 +38,8 @@ public class Interface implements ActionListener {
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
         frame.setVisible(true);
-        ActionListener actionListener = new App(bot, chatSession, this);
-        tf.addActionListener(actionListener);
-        send.addActionListener(actionListener);
+        addListener(bot, chatSession, this, 0);
+        
     }
 
     @Override
@@ -54,4 +53,20 @@ public class Interface implements ActionListener {
     public String getText(){
         return tf.getText();
     }
-}
+    public void addAction(){
+
+    }
+    public void addListener(Bot bot, Chat chatSession, Interface a, int x){
+        if(x==1){
+            ActionListener[] z = tf.getActionListeners();
+          
+                tf.removeActionListener(z[0]);
+                send.removeActionListener(z[0]);
+            
+        }
+        ActionListener actionListener = new App(bot, chatSession, a);
+        tf.addActionListener(actionListener);
+        send.addActionListener(actionListener);
+    }
+    }
+

@@ -8,14 +8,17 @@ public class Lonely {
     private static final boolean TRACE_MODE = false;
     static String botName = "Mr. Lonely";
     static String textLine = "";
+    static String resourcesPath;
+    static Interface gui;
     public static void main(String args[]){
-        String resourcesPath = getResourcesPath();
+        resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
-        Bot bot = new Bot("super", resourcesPath);
+        Bot bot = new Bot("safety", resourcesPath);
         Chat chatSession = new Chat(bot);
         bot.brain.nodeStats();
-        Interface gui = new Interface(bot, chatSession);
+        gui = new Interface(bot, chatSession);
+        gui.setText("Mr.Lonely: "+chatSession.multisentenceRespond("LONELYBOT3000")+"\n\n");
         
     }
 
@@ -24,8 +27,19 @@ public class Lonely {
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
         System.out.println(path);
-        String resourcesPath = path + File.separator +"demo"+File.separator+ "src" + File.separator + "main" + File.separator + "resources";
+        if(!path.contains("demo")){
+            path=path+File.separator+"demo";
+        }
+        String resourcesPath = path +File.separator+ "src" + File.separator + "main" + File.separator + "resources";
         return resourcesPath;
+    }
+    public void newBot(String name, String message){
+Bot temp = new Bot(name, resourcesPath);
+Chat chatTemp = new Chat(temp);
+gui.addListener(temp,chatTemp, gui, 1);
+String[] nice = message.split(":");
+chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
+gui.setText("Mr.Lonely: " + chatTemp.multisentenceRespond("Do you like " + nice[2]));
     }
     }
 
