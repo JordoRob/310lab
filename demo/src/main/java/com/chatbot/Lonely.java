@@ -10,7 +10,7 @@ public class Lonely {
     static String textLine = "";
     static String resourcesPath;
     static Interface gui;
-    public static void main(String args[]){
+    public static void main(String args[]){ //main creates the bot and creates the interface session
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -22,7 +22,7 @@ public class Lonely {
         
     }
 
-    private static String getResourcesPath() {
+    private static String getResourcesPath() { //grabs the path for the bot libraries
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
@@ -33,7 +33,7 @@ public class Lonely {
         String resourcesPath = path +File.separator+ "src" + File.separator + "main" + File.separator + "resources";
         return resourcesPath;
     }
-    public void newBot(String name, String message){
+    public void newBot(String name, String message){ //creates a new bot for the switchover from safety to regular. Could be expanded upon if necessary
 Bot temp = new Bot(name, resourcesPath);
 Chat chatTemp = new Chat(temp);
 gui.addListener(temp,chatTemp, gui, 1);

@@ -47,7 +47,7 @@ public class Interface implements ActionListener {
         // TODO Auto-generated method stub
 
     }
-    public void setText(String a){
+    public void setText(String a){ //getters and setters
         ta.append(a);
     }
     public String getText(){
@@ -56,15 +56,15 @@ public class Interface implements ActionListener {
     public void addAction(){
 
     }
-    public void addListener(Bot bot, Chat chatSession, Interface a, int x){
-        if(x==1){
-            ActionListener[] z = tf.getActionListeners();
+    public void addListener(Bot bot, Chat chatSession, Interface a, int x){ //int x is 0 if this is the first time we have created the bot, otherwise it is 1
+        if(x>0){
+            ActionListener[] z = tf.getActionListeners(); //this removes all other action listeners (removes other bots)
           
                 tf.removeActionListener(z[0]);
                 send.removeActionListener(z[0]);
             
         }
-        ActionListener actionListener = new App(bot, chatSession, a);
+        ActionListener actionListener = new App(bot, chatSession, a); //sets up the App class as the actionlistener
         tf.addActionListener(actionListener);
         send.addActionListener(actionListener);
     }

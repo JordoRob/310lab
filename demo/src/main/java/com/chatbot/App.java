@@ -10,6 +10,7 @@ public class App extends Lonely implements ActionListener {
 public Interface gui;
 public Bot lonely;
 public Chat chatSession;
+//This class completes the interfacing with the bot
 	public App(Bot lonely, Chat chatSession, Interface gui) {
 		this.gui=gui;
 		this.lonely=lonely;
@@ -19,8 +20,8 @@ public Chat chatSession;
 	@Override
 	public void actionPerformed(ActionEvent e) {	
 		textLine = gui.getText();
-		gui.setText("You: "+ textLine + "\n\n");
-				if ((textLine == null) || (textLine.length() < 1))
+		gui.setText("You: "+ textLine + "\n\n"); //Send out your message to the UI
+				if ((textLine == null) || (textLine.length() < 1)) //Checks for null or incorrect input
 					textLine = MagicStrings.null_input;
 				if (textLine.equals("q")) {
 					System.exit(0);
@@ -30,21 +31,21 @@ public Chat chatSession;
 				} else {
 					String request = textLine;
 					if (MagicBooleans.trace_mode)
-						System.out.println(
+						System.out.println( //Sends the user text and previous bot message to the system for debugging
 								"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
 										+ ":TOPIC=" + chatSession.predicates.get("topic"));
-					String response = chatSession.multisentenceRespond(request);
-					if(response.contains("CHATTIME")){
+					String response = chatSession.multisentenceRespond(request); //Sends user message to the chatsession/bot and gets a response
+					if(response.contains("CHATTIME")){ //This is the switch that flips from safety oriented questions to the default AIML chatbot
 						newBot("super", response);
 						
 					}
-					else{
+					else{ //This replaces all incorrect symbols
 					while (response.contains("&lt;"))
 						response = response.replace("&lt;", "<");
 					while (response.contains("&gt;"))
 						response = response.replace("&gt;", ">");
-                        gui.setText("Mr.Lonely: "+ response + "\n\n");
+                        gui.setText("Mr.Lonely: "+ response + "\n\n"); //sends text to the ui
 					}
-				gui.tf.setText("");}
+				gui.tf.setText("");} //resets the typing textbox
 	}
 		}
