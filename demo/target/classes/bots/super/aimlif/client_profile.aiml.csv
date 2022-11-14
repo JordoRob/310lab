@@ -1,3 +1,4 @@
+0,GETNAME,*,*,<get name="firstname"/>,client_profile.aiml
 0,CHATTIME *,*,*,<think><set name="firstname"><star/></set></think>,client_profile.aiml
 0,MY FAVORITE COLOR IS <SET>COLOR</SET>,*,*,<set name="favoritecolor"><formal><star/></formal></set> is a nice color. <think><set name="it"><set name="topic"><star/></set></set></think>,client_profile.aiml
 0,MY FAVORITE COLOR IS *,*,*,I didn't recognize <star/> as a color.,client_profile.aiml

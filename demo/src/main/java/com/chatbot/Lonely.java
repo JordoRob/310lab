@@ -1,4 +1,6 @@
 package com.chatbot;
+
+import java.awt.*;
 import java.io.File;
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
@@ -10,7 +12,8 @@ public class Lonely {
     static String textLine = "";
     static String resourcesPath;
     static Interface gui;
-    public static void main(String args[]){ //main creates the bot and creates the interface session
+
+    public static void main(String args[]) { // main creates the bot and creates the interface session
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -18,28 +21,40 @@ public class Lonely {
         Chat chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);
-        gui.setText("Mr.Lonely: "+chatSession.multisentenceRespond("LONELYBOT3000")+"\n\n");
-        
+        gui.setText("Mr.Lonely: " + chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n");
+
     }
 
-    private static String getResourcesPath() { //grabs the path for the bot libraries
+    private static String getResourcesPath() { // grabs the path for the bot libraries
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
         System.out.println(path);
-        if(!path.contains("demo")){
-            path=path+File.separator+"demo";
+        if (!path.contains("demo")) {
+            path = path + File.separator + "demo";
         }
-        String resourcesPath = path +File.separator+ "src" + File.separator + "main" + File.separator + "resources";
+        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
         return resourcesPath;
     }
-    public void newBot(String name, String message){ //creates a new bot for the switchover from safety to regular. Could be expanded upon if necessary
-Bot temp = new Bot(name, resourcesPath);
-Chat chatTemp = new Chat(temp);
-gui.addListener(temp,chatTemp, gui, 1);
-String[] nice = message.split(":");
-chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
-gui.setText("Mr.Lonely: " + chatTemp.multisentenceRespond("Do you like " + nice[2]));
-    }
-    }
 
+    public void newBot(String name, String message) { // creates a new bot for the switchover from safety to regular.
+                                                      // Could be expanded upon if necessary
+        Bot temp = new Bot(name, resourcesPath);
+        Chat chatTemp = new Chat(temp);
+        gui.addListener(temp, chatTemp, gui, 1);
+
+        if (name == "super") {
+            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n");
+            if (message.contains("CHATTIME")) {
+                String[] nice = message.split(":");
+                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
+                gui.setText("Mr.Lonely: " + chatTemp.multisentenceRespond("I like" + nice[2]));
+            } else
+                chatTemp.multisentenceRespond("My name is " + message);
+        }
+        if (name == "safety") {
+            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n");
+            chatTemp.multisentenceRespond("My name is " + message);
+        }
+    }
+}

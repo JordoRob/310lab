@@ -10,6 +10,7 @@ public class App extends Lonely implements ActionListener {
 public Interface gui;
 public Bot lonely;
 public Chat chatSession;
+public int button;
 //This class completes the interfacing with the bot
 	public App(Bot lonely, Chat chatSession, Interface gui) {
 		this.gui=gui;
@@ -18,7 +19,8 @@ public Chat chatSession;
 			}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
+	public void actionPerformed(ActionEvent e) {
+		
 		textLine = gui.getText();
 		gui.setText("You: "+ textLine + "\n\n"); //Send out your message to the UI
 				if ((textLine == null) || (textLine.length() < 1)) //Checks for null or incorrect input
@@ -37,7 +39,6 @@ public Chat chatSession;
 					String response = chatSession.multisentenceRespond(request); //Sends user message to the chatsession/bot and gets a response
 					if(response.contains("CHATTIME")){ //This is the switch that flips from safety oriented questions to the default AIML chatbot
 						newBot("super", response);
-						
 					}
 					else{ //This replaces all incorrect symbols
 					while (response.contains("&lt;"))
@@ -47,5 +48,7 @@ public Chat chatSession;
                         gui.setText("Mr.Lonely: "+ response + "\n\n"); //sends text to the ui
 					}
 				gui.tf.setText("");} //resets the typing textbox
-	}
+			
 		}
+	}
+		

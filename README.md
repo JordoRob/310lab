@@ -1,90 +1,28 @@
-# 310 Lab Group 13
-## **Assignment 2:**
-### **Description:**
-We are creating a chatbot with a focus on users who are experiencing loneliness. It will have a UI and respond to user accordingly. It will also have a detected risk level and from that can inform the user if they are in danger from themselves. We plan on using swing for java to create a simplistic UI to begin with.
-### **Chosen SDLC:**
+# **310 Lab Group 13**
+# Assignment 3:
+## **Description:**
 
-We chose to use Agile Scrum as it will allow us to work quickly through a feature and then go back and choose to work on something else. This will work better than other SDLC for us because we will operate much quicker when working on one feature together and can help figure out problems faster.
+### Chatbot description:
+    We have now made the chatbot incredibly more robust, previously it had a hard time recognizing any mistakes or text outside it's incredibly limited scope. It is now able to recognize most different forms of text and can handle most of them. It is able to answer questions far outside the scope of the project and can hold a fairly stable conversation.
 
-### **Phases of the SDLC:**
+### Buffet items: 
+- We switched our code over to using AIML library, utilizing existing language recognition tools and simple conversation
+ - We had previously already created UI, so we decided to just make minor updates to make it more visually appealing
 
-- Outline planning phase
-    - Figure out limitations
-        - What can we get accomplished and what needs more time
-        - How long will each task take
-    - Choose programming language 
-        - Choose what language that can make an easy UI
-        - Figure out all our teams skills in each language
-    - Project plan
-        - Creating github and project management tools
+ ### New Features/Updates:
 
-- Sprint Cycles
-    - Plan
-        - Make list of needed features
-        - Choose highest priority feature to develop
-    - Create
-        - Develop feature
-    - Review
-        - Test features
-        - Refactor if necessary
-        - Write Documentation
-
-- Closure
-    - Documentation
-        - Write documentation so future developers can understand
-        - If needed user manuals
-    - Assess project
-        - What lessons have been learned from the project
-    - What can be improved
-        - For later use in individual projects
-
-### **Task Assignments:**
--	UI Creation (Jordan)
-    -	Hour Estimation: 4 hours
-    -   Actual Hours: 2.5 hours
-
--   Chatbot Programming (Kael)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 3 hours
-
--	Chatbot Programming (Jack)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 3 hours
-
--	Chatbot Programming (Jordan)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 3 hours
-
--	Gantt Chart Creation (Jordan)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 1 hour
-
--	WBS Creation (Jack)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 2 hours
-
--	Code Testing (Jordan, Kael, Jack)
-    -	Hour Estimation: 2 hours
-    -	Actual Hours: 2 hours
-
-### **Limitations of the project**
-
-- Can only respond to certain messages
-- Messages must be simple as the bot only knows keywords
-- Can only respond with canned responses
-- Bot eventually stops where you can only repeat what you've done already
-- Current prototype does not provide actual contact information of mental health professionals
-
-## **Charts and Structures:**
-[Gant Chart](https://app.asana.com/read-only/COSC310-Assignment-2-(CHATBOT)/1191351854255875/b44a2272681556ed28b269e3abf307dd/timeline)
-
-WBS
-
-![WBS Structure](./images/WBS.jpg)
+- Used AIML library to create two bots (or more).
+    - This allowed us to start the conversation with questions relating to safety where afterwards it switches to conversation mode if safety is determined. This could also be used to create more specialized bots in the future.
+    - ADD PHOTO
+- Used AIML alicebot for the default conversation (an open source AI project) that allowed us to utilize a massive library of pre-programmed responses.
+    - This made it much easier to streamline the conversation aspect of the project, making us able to focus more on the safety features.
+    - INSERT PHOTO
+ - Made the code much more organized, utilizing OOB principles and seperating it into classes and subclasses
+    - This is self-explanatory but it makes the code much easier to work on and allows for easier debugging/updates, also made our method of switching bot libraries easier
+    - INSERT PHOTO
 
 
-JIRA
+    
 
-![Jira picture](./images/jira.jpg)
 
 
