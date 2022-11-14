@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: safety.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: November 01, 2022 -->
+<!--  -->
+<!-- This AIML file is part of the SAFETY 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SAFETY brain is Copyright &copy; 2022 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SAFETY brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>LONELYBOT3000</pattern>
+<template>It is wonderful to see you, What's your name?</template>
+</category>
+<category><pattern>MY NAME IS *</pattern><that>IT IS WONDERFUL TO SEE YOU WHAT IS YOUR NAME</that>
+<template>Well then <star/>, how have you been feeling lately?<think><set name="firstname"><star/></set></think></template>
+</category>
+<category><pattern><SET>POSITIVE</SET></pattern>
+<template>I am very glad to hear that! What would you like to talk about?</template>
+</category>
+<category><pattern><SET>NEGATIVE</SET></pattern>
+<template>I am sorry to hear that, before we continue, do you feel you are a danger to yourself or anyone around you?</template>
+</category>
+<category><pattern>YES</pattern><that>_ DANGER _</that>
+<template>We recommend you contact emergency services, the number is: xxx <think><set name="topic">danger</set></think></template>
+</category>
+<category><pattern>NO</pattern><that>_ DANGER _</that>
+<template>Glad to hear it :) \n What would you like to talk about?</template>
+</category>
+<category><pattern>*</pattern><that>_ TALK ABOUT</that>
+<template>CHATTIME: <get name="firstname"/>: <star/></template>
+</category>
+</aiml>
