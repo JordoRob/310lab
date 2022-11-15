@@ -2,7 +2,6 @@ package com.chatbot;
 
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
-import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
 import java.awt.event.*;
@@ -38,7 +37,7 @@ public int button;
 					String request = textLine;
 					if (MagicBooleans.trace_mode)
 						System.out.println( //Sends the user text and previous bot message to the system for debugging
-								"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
+								"STATE=" + request + ":THAT=" + (chatSession.thatHistory.get(0)).get(0)
 										+ ":TOPIC=" + chatSession.predicates.get("topic"));
 					String response = chatSession.multisentenceRespond(request); //Sends user message to the chatsession/bot and gets a response
 					if(response.contains("CHATTIME")){ //This is the switch that flips from safety oriented questions to the default AIML chatbot

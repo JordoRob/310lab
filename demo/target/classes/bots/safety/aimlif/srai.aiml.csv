@@ -6,3 +6,7 @@
 0,YOU BET,*,*,<srai>YES</srai>,srai.aiml
 0,NAH,*,*,<srai>NO</srai>,srai.aiml
 0,NOPE,*,*,<srai>NO</srai>,srai.aiml
+0,HELLO,*,*,<srai>HI</srai>,srai.aiml
+0,YO,*,*,<srai>HI</srai>,srai.aiml
+0,HOWDY,*,*,<srai>HI</srai>,srai.aiml
+0,HELLO THERE,*,*,<srai>HI</srai>,srai.aiml

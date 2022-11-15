@@ -18,6 +18,9 @@
 <category><pattern>LONELYBOT3000</pattern>
 <template>It is wonderful to see you, What's your name?</template>
 </category>
+<category><pattern>HI</pattern>
+<template>Hi there! How are you feeling?</template>
+</category>
 <category><pattern>MY NAME IS *</pattern>
 <template>Well then <star/>, how have you been feeling lately?<think><set name="firstname"><star/></set></think></template>
 </category>

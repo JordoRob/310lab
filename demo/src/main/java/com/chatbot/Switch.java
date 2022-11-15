@@ -17,10 +17,10 @@ public Switch(Bot lonely, Chat chatSession) {
     this.chatSession=chatSession;
         }
         public void actionPerformed(ActionEvent e) {
-            String x = chatSession.multisentenceRespond("GETNAME");
+            String x = chatSession.multisentenceRespond("GETNAME"); //gets the users name
             try{
 			if(lonely.name=="super"){
-                newBot("safety", x);
+                newBot("safety", x); //sends user name
             }else{
 				newBot("super", x);
 			} }catch (BadLocationException e1) {

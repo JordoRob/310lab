@@ -1,6 +1,5 @@
 package com.chatbot;
 
-import java.awt.*;
 import java.io.File;
 
 import javax.swing.text.BadLocationException;
@@ -57,27 +56,26 @@ public class Lonely {
     }
 
     public void newBot(String name, String message) throws BadLocationException { // creates a new bot for the
-                                                                                  // switchover from safety to regular.
-        // Could be expanded upon if necessary
+                                                                                  // switching from safety to regular.
         Bot temp = new Bot(name, resourcesPath);
         Chat chatTemp = new Chat(temp);
         gui.addListener(temp, chatTemp, gui, 1);
 
         if (name == "super") {
-            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
             if (message.contains("CHATTIME")) {
                 String[] nice = message.split(":");
-                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
+                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]); //Sends the bot the users name
                 gui.setText(chatTemp.multisentenceRespond("I like" + nice[2]), 1);
             } else
                 chatTemp.multisentenceRespond("My name is " + message);
         }
         if (name == "safety") {
-            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
             chatTemp.multisentenceRespond("My name is " + message);
         }
     }
-    public static boolean newBotTest() throws BadLocationException {
+    public static boolean newBotTest() throws BadLocationException { //Testing method
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -95,7 +93,7 @@ public class Lonely {
         gui.addListener(temp, chatTemp, gui, 1);
 
         if (name == "super") {
-            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
             if (message.contains("CHATTIME")) {
                 String[] nice = message.split(":");
                 chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
@@ -104,7 +102,7 @@ public class Lonely {
                 chatTemp.multisentenceRespond("My name is " + message);
         }
         if (name == "safety") {
-            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
             test = chatTemp.multisentenceRespond("My name is " + message);
         }
         System.out.println(test);

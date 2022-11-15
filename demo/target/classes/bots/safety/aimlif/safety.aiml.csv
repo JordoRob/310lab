@@ -1,4 +1,5 @@
 0,LONELYBOT3000,*,*,It is wonderful to see you#Comma What's your name?,safety.aiml
+0,HI,*,*,Hi there! How are you feeling?,safety.aiml
 0,MY NAME IS *,*,*,Well then <star/>#Comma how have you been feeling lately?<think><set name="firstname"><star/></set></think>,safety.aiml
 0,<SET>POSITIVE</SET>,*,*,I am very glad to hear that! What would you like to talk about?,safety.aiml
 0,<SET>NEGATIVE</SET>,*,*,I am sorry to hear that#Comma before we continue#Comma do you feel you are a danger to yourself or anyone around you?,safety.aiml

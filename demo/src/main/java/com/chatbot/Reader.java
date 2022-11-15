@@ -3,13 +3,12 @@ package com.chatbot;
 import java.util.Locale;  
 import javax.speech.Central;
 import javax.speech.EngineException;
-import javax.speech.EngineStateError;
 import javax.speech.synthesis.Synthesizer;  
 import javax.speech.synthesis.SynthesizerModeDesc;  
 public class Reader{
     public Synthesizer synthesizer;
 
-    public Reader(){
+    public Reader(){ //Sets up the voice
     System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us" + ".cmu_us_kal.KevinVoiceDirectory");  
     try {
         Central.registerEngineCentral("com.sun.speech.freetts" + ".jsapi.FreeTTSEngineCentral");
@@ -21,7 +20,7 @@ public class Reader{
         e.printStackTrace();
     }  
     }
-    public void read(String line, int x){
+    public void read(String line, int x){ //narrates the text
         try{
             
             synthesizer.resume();  

@@ -3,8 +3,6 @@ package com.chatbot;
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
 
-import javax.speech.EngineException;
-import javax.speech.EngineStateError;
 import javax.swing.*;
 import javax.swing.text.*;
 
@@ -31,7 +29,7 @@ public class Interface implements ActionListener {
     StyledDocument doc = ta.getStyledDocument();
     JScrollPane scrollPane = new JScrollPane(ta);
     boolean narrator = false;
-    Reader kevin=new Reader();
+    Reader kevin=new Reader(); //Creates a narrator
     // Adding Components to the frame
 
     public Interface(Bot bot, Chat chatSession) {
@@ -51,7 +49,7 @@ public class Interface implements ActionListener {
         frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
         frame.setVisible(true);
         addListener(bot, chatSession, this, 0);
-        ItemListener itemListener = new ItemListener() {
+        ItemListener itemListener = new ItemListener() { //itemlistener for narrator button
             public void itemStateChanged(ItemEvent itemEvent){
                 if(narrator){
                 narrator=false;
@@ -105,7 +103,7 @@ public class Interface implements ActionListener {
         // TODO Auto-generated method stub
 
     }
-    public void setText(String a, int x) throws BadLocationException{ //getters and setters
+    public void setText(String a, int x) throws BadLocationException{ //Font formatting
         SimpleAttributeSet usertext = new SimpleAttributeSet();
         StyleConstants.setBold(usertext, true);
         StyleConstants.setForeground(usertext, Color.BLUE);
@@ -157,7 +155,7 @@ public class Interface implements ActionListener {
             
         }
         ActionListener text = new App(bot, chatSession, a); //sets up the App class as the actionlistener
-        ActionListener change = new Switch(bot, chatSession);
+        ActionListener change = new Switch(bot, chatSession); //sets up the switch class
         tf.addActionListener(text);
         send.addActionListener(text);
         switchbutton.addActionListener(change);
