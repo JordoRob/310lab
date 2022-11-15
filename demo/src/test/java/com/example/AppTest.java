@@ -2,6 +2,8 @@ package com.example;
 
 import static org.junit.Assert.assertTrue;
 
+import javax.swing.text.BadLocationException;
+
 import org.junit.Test;
 
 import com.chatbot.Interface;
@@ -32,7 +34,7 @@ public class AppTest
      * 
      */
     @Test
-    public void switchBotTest(){
+    public void switchBotTest() throws BadLocationException{
         boolean result = Lonely.newBotTest();
         assertTrue(result);
     }

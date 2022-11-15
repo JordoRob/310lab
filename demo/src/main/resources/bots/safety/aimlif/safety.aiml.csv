@@ -14,3 +14,4 @@
 0,# <SET>DANGER</SET>,*,*,Do you feel like this often?,safety.aiml
 0,YES,*,*,You should reach out and talk to a real person#Comma they can help you more#Newline                            Your local number is xxx-xxx-xxxx,safety.aiml
 0,NO,*,*,That is good#Comma if you feel this way often you should reach out.,safety.aiml
+0,TESTING,*,*,TEST,safety.aiml
