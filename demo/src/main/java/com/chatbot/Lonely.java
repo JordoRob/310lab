@@ -77,4 +77,40 @@ public class Lonely {
             chatTemp.multisentenceRespond("My name is " + message);
         }
     }
+    public static boolean newBotTest() throws BadLocationException {
+        resourcesPath = getResourcesPath();
+        System.out.println(resourcesPath);
+        MagicBooleans.trace_mode = TRACE_MODE;
+        Bot bot = new Bot("safety", resourcesPath);
+        Chat chatSession = new Chat(bot);
+        gui = new Interface(bot, chatSession);
+        
+        // Could be expanded upon if necessary
+        String name = "safety";
+        String message = "TEST";
+
+        String test = "";
+        Bot temp = new Bot(name, resourcesPath);
+        Chat chatTemp = new Chat(temp);
+        gui.addListener(temp, chatTemp, gui, 1);
+
+        if (name == "super") {
+            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
+            if (message.contains("CHATTIME")) {
+                String[] nice = message.split(":");
+                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
+                gui.setText("Mr.Lonely: " + chatTemp.multisentenceRespond("I like" + nice[2]), 2);
+            } else
+                chatTemp.multisentenceRespond("My name is " + message);
+        }
+        if (name == "safety") {
+            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
+            test = chatTemp.multisentenceRespond("My name is " + message);
+        }
+        System.out.println(test);
+        if (test.equals("Well then TEST, how have you been feeling lately?")) {
+            return true;
+        }
+        return false;
+    }
 }
