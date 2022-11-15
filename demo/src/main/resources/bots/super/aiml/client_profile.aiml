@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: client_profile.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: October 31, 2022 -->
+<!-- Last modified: November 14, 2022 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -15,6 +15,9 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
+<category><pattern>GETNAME</pattern>
+<template><get name="firstname"/></template>
+</category>
 <category><pattern>CHATTIME *</pattern>
 <template><think><set name="firstname"><star/></set></think></template>
 </category>

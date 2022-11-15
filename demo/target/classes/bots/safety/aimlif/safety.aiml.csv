@@ -5,3 +5,4 @@
 0,YES,_ DANGER _,*,We recommend you contact emergency services#Comma the number is: xxx <think><set name="topic">danger</set></think>,safety.aiml
 0,NO,_ DANGER _,*,Glad to hear it :) \n What would you like to talk about?,safety.aiml
 0,*,_ TALK ABOUT,*,CHATTIME: <get name="firstname"/>: <star/>,safety.aiml
+0,GETNAME,*,*,<get name="firstname"/>,safety.aiml

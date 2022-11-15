@@ -19,6 +19,7 @@ public class Interface implements ActionListener {
     JLabel label = new JLabel("Enter Text");
     JTextField tf = new JTextField(20); // accepts upto 10 characters
     JButton send = new JButton("Send");
+    JButton switchbutton = new JButton("Switch");
     // Text Area at the Center
     JTextArea ta = new JTextArea();
     JScrollPane scrollPane = new JScrollPane(ta);
@@ -33,6 +34,7 @@ public class Interface implements ActionListener {
         panel.add(label); // Components Added using Flow Layout
         panel.add(tf);
         panel.add(send);
+        panel.add(switchbutton);
         ta.setEditable(false);
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
@@ -57,16 +59,20 @@ public class Interface implements ActionListener {
 
     }
     public void addListener(Bot bot, Chat chatSession, Interface a, int x){ //int x is 0 if this is the first time we have created the bot, otherwise it is 1
+
         if(x>0){
             ActionListener[] z = tf.getActionListeners(); //this removes all other action listeners (removes other bots)
-          
+            ActionListener[] y = switchbutton.getActionListeners();
                 tf.removeActionListener(z[0]);
                 send.removeActionListener(z[0]);
+                switchbutton.removeActionListener(y[0]);
             
         }
-        ActionListener actionListener = new App(bot, chatSession, a); //sets up the App class as the actionlistener
-        tf.addActionListener(actionListener);
-        send.addActionListener(actionListener);
+        ActionListener text = new App(bot, chatSession, a); //sets up the App class as the actionlistener
+        ActionListener change = new Switch(bot, chatSession);
+        tf.addActionListener(text);
+        send.addActionListener(text);
+        switchbutton.addActionListener(change);
     }
     }
 

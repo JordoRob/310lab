@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: safety.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: November 01, 2022 -->
+<!-- Last modified: November 14, 2022 -->
 <!--  -->
 <!-- This AIML file is part of the SAFETY 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -35,5 +35,8 @@
 </category>
 <category><pattern>*</pattern><that>_ TALK ABOUT</that>
 <template>CHATTIME: <get name="firstname"/>: <star/></template>
+</category>
+<category><pattern>GETNAME</pattern>
+<template><get name="firstname"></get></template>
 </category>
 </aiml>
