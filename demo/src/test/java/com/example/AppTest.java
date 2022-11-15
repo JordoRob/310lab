@@ -4,17 +4,36 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.chatbot.Interface;
+import com.chatbot.Lonely;
+
 /**
  * Unit test for simple App.
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
+    /*
+     * tests basic input and output with correct pattern matching
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void botResponseTest(){
+        boolean result = Lonely.testResponse();
+        assertTrue(result);
+    }
+    /*
+     * Tests that the interface can be created without error
+     */
+    @Test
+    public void interfaceTest(){
+        boolean result = Interface.testInterface();
+        assertTrue(result);
+    }
+    /*
+     * 
+     */
+    @Test
+    public void switchBotTest(){
+        boolean result = Lonely.newBotTest();
+        assertTrue(result);
     }
 }

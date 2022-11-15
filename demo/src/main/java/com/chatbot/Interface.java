@@ -43,7 +43,44 @@ public class Interface implements ActionListener {
         addListener(bot, chatSession, this, 0);
         
     }
+    public static boolean testInterface(){
+        try {
+            JFrame frame = new JFrame("Unlonley");
+            // Creating the MenuBar and adding components
+            JMenuBar mb = new JMenuBar();
+            JMenu m2 = new JMenu("Help");
+            JMenuItem m11 = new JMenuItem("Report a bug");
+            JMenuItem m22 = new JMenuItem("Contact Authorities");
+            // Creating the panel at bottom and adding components
+            JPanel panel = new JPanel(); // the panel is not visible in output
+            JLabel label = new JLabel("Enter Text");
+            JTextField tf = new JTextField(20); // accepts upto 10 characters
+            JButton send = new JButton("Send");
+            JButton switchbutton = new JButton("Switch");
+            // Text Area at the Center
+            JTextArea ta = new JTextArea();
+            JScrollPane scrollPane = new JScrollPane(ta);
+            
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 800);
+            mb.add(m2);
+            m2.add(m11);
+            m2.add(m22);
+            panel.add(label); // Components Added using Flow Layout
+            panel.add(tf);
+            panel.add(send);
+            panel.add(switchbutton);
+            ta.setEditable(false);
+            frame.getContentPane().add(BorderLayout.SOUTH, panel);
+            frame.getContentPane().add(BorderLayout.NORTH, mb);
+            frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
+            frame.setVisible(false);
+        } catch (Exception e) {
+            return false;
+        }
 
+        return true;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
