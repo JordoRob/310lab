@@ -18,9 +18,6 @@
 <category><pattern>GETNAME</pattern>
 <template><get name="firstname"/></template>
 </category>
-<category><pattern>CHATTIME *</pattern>
-<template><think><set name="firstname"><star/></set></think></template>
-</category>
 <category><pattern>MY FAVORITE COLOR IS <SET>COLOR</SET></pattern>
 <template><set name="favoritecolor"><formal><star/></formal></set> is a nice color. <think><set name="it"><set name="topic"><star/></set></set></think></template>
 </category>

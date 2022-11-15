@@ -12,13 +12,14 @@ public class Lonely {
     static String textLine = "";
     static String resourcesPath;
     static Interface gui;
-
+    public static Bot bot;
+    public static Chat chatSession;
     public static void main(String args[]) { // main creates the bot and creates the interface session
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
-        Bot bot = new Bot("safety", resourcesPath);
-        Chat chatSession = new Chat(bot);
+        bot = new Bot("safety", resourcesPath);
+        chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);
         gui.setText("Mr.Lonely: " + chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n");
@@ -39,22 +40,22 @@ public class Lonely {
 
     public void newBot(String name, String message) { // creates a new bot for the switchover from safety to regular.
                                                       // Could be expanded upon if necessary
-        Bot temp = new Bot(name, resourcesPath);
-        Chat chatTemp = new Chat(temp);
-        gui.addListener(temp, chatTemp, gui, 1);
+        bot = new Bot(name, resourcesPath);
+        chatSession = new Chat(bot);
+        gui.addListener(bot, chatSession, gui, 1);
 
         if (name == "super") {
             gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n");
             if (message.contains("CHATTIME")) {
                 String[] nice = message.split(":");
-                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
-                gui.setText("Mr.Lonely: " + chatTemp.multisentenceRespond("I like" + nice[2]));
+                chatSession.multisentenceRespond("My name is " + nice[1]);
+                gui.setText("Mr.Lonely: " + chatSession.multisentenceRespond("I like" + nice[2])+"\n\n");
             } else
-                chatTemp.multisentenceRespond("My name is " + message);
+                System.out.println(chatSession.multisentenceRespond("My name is " + message));
         }
         if (name == "safety") {
             gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n");
-            chatTemp.multisentenceRespond("My name is " + message);
+            chatSession.multisentenceRespond("My name is " + message);
         }
     }
 }
