@@ -3,7 +3,7 @@
 ## **Description:**
 
 ### Chatbot description:
-    We have now made the chatbot incredibly more robust, previously it had a hard time recognizing any mistakes or text outside it's incredibly limited scope. It is now able to recognize most different forms of text and can handle most of them. It is able to answer questions far outside the scope of the project and can hold a fairly stable conversation.
+- We have now made the chatbot incredibly more robust, previously it had a hard time recognizing any mistakes or text outside it's incredibly limited scope. It is now able to recognize most different forms of text and can handle most of them. It is able to answer questions far outside the scope of the project and can hold a fairly stable conversation.
 
 ### Limitations
 - Needs more responses
@@ -18,7 +18,7 @@
 - Implemented a Text to Speech library called FreeTTS
 
 ### JIRA
-![JIRA](./images/JIRA.PNG)
+- ![JIRA](./images/JIRA.PNG)
 
 ### Data flow diagrams
 - Level 0
