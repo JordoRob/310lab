@@ -46,10 +46,10 @@
 
 - Used AIML library to create two bots (or more).
     - This allowed us to start the conversation with questions relating to safety where afterwards it switches to conversation mode if safety is determined. This could also be used to create more specialized bots in the future.
-![SWITCH](./images/Switch.png)
+![SWITCH](./images/Switch.PNG)
 - Used AIML alicebot for the default conversation (an open source AI project) that allowed us to utilize a massive library of pre-programmed responses.
     - This made it much easier to streamline the conversation aspect of the project, making us able to focus more on the safety features.
-![AIML](./images/AIMLSnip.png)
+![AIML](./images/AIMLSnip.PNG)
   
 - Made the code much more organized, utilizing OOB principles and seperating it into classes and subclasses
     - This is self-explanatory but it makes the code much easier to work on and allows for easier debugging/updates, also made our method of switching bot libraries easier.
