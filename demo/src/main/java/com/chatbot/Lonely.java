@@ -19,6 +19,8 @@ public class Lonely {
     public static Chat chatSession;
 
     public static void main(String args[]) throws BadLocationException{ // main creates the bot and creates the interface session
+        //System.out.println(newBotTest());
+
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -26,8 +28,20 @@ public class Lonely {
         chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);
-        gui.setText(chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n", 1);
+        gui.setText(chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n", 1);}
 
+    public static boolean testResponse() {
+        resourcesPath = getResourcesPath();
+        MagicBooleans.trace_mode = TRACE_MODE;
+        Bot bot = new Bot("safety", resourcesPath);
+        Chat chatSession = new Chat(bot);
+        bot.brain.nodeStats();
+        String response = chatSession.multisentenceRespond("TESTING"); // Sends user message to the chatsession/bot and
+                                                                       // gets a response
+        if (response.equals("TEST")) {
+            return true;
+        }
+        return false;
     }
 
     private static String getResourcesPath() { // grabs the path for the bot libraries

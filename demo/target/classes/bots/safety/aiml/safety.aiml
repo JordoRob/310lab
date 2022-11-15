@@ -64,4 +64,7 @@
 <category><pattern>NO</pattern>
 <template>That is good, if you feel this way often you should reach out.</template>
 </category>
+<category><pattern>TESTING</pattern>
+<template>TEST</template>
+</category>
 </aiml>
