@@ -10,7 +10,7 @@ import org.alicebot.ab.MagicBooleans;
 public class AddAiml {
 
 	private static final boolean TRACE_MODE = false;
-	static String botName = "super";
+	static String botName = "safety";
 
 	public static void main(String[] args) {
 		try {

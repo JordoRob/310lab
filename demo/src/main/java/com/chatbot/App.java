@@ -6,6 +6,8 @@ import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
 import java.awt.event.*;
+
+import javax.swing.text.BadLocationException;
 public class App extends Lonely implements ActionListener {
 public Interface gui;
 public Bot lonely;
@@ -22,7 +24,9 @@ public int button;
 	public void actionPerformed(ActionEvent e) {
 		
 		textLine = gui.getText();
-		gui.setText("You: "+ textLine + "\n\n"); //Send out your message to the UI
+		try {
+			gui.setText(textLine + "\n\n", 0);
+		
 				if ((textLine == null) || (textLine.length() < 1)) //Checks for null or incorrect input
 					textLine = MagicStrings.null_input;
 				if (textLine.equals("q")) {
@@ -45,10 +49,13 @@ public int button;
 						response = response.replace("&lt;", "<");
 					while (response.contains("&gt;"))
 						response = response.replace("&gt;", ">");
-                        gui.setText("Mr.Lonely: "+ response + "\n\n"); //sends text to the ui
+                        gui.setText(response + "\n\n", 1); //sends text to the ui
 					}
 				gui.tf.setText("");} //resets the typing textbox
-			
+			} catch (BadLocationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} //Send out your message to the UI
 		}
 	}
 		

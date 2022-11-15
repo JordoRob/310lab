@@ -28,16 +28,41 @@
 <template>I am sorry to hear that, before we continue, do you feel you are a danger to yourself or anyone around you?</template>
 </category>
 <category><pattern>YES</pattern><that>_ DANGER _</that>
-<template>We recommend you contact emergency services, the number is: xxx <think><set name="topic">danger</set></think></template>
+<template>We recommend you contact emergency services, the number is: xxx</template>
+</category>
+<category><pattern>NO</pattern><that>_ EMERGENCY _</that>
+<template>We strongly urge you to.</template>
 </category>
 <category><pattern>NO</pattern><that>_ DANGER _</that>
-<template>Glad to hear it :) \n What would you like to talk about?</template>
+<template>I am glad \n What would you like to talk about?</template>
 </category>
 <category><pattern>*</pattern><that>_ TALK ABOUT</that>
 <template>CHATTIME: <get name="firstname"/>: <star/></template>
 </category>
 <category><pattern>GETNAME</pattern>
-<template><get name="firstname"></get></template>
+<template><get name="firstname"/></template>
+</category>
+<category><pattern>WHAT IS MY NAME</pattern>
+<template><get name="firstname"/></template>
+</category>
+<category><pattern>HOW ARE YOU</pattern>
+<template>I am well, How are you</template>
+</category>
+<category><pattern>HOW OLD ARE YOU</pattern>
+<template>Roughly 1 month</template>
+</category>
+<category><pattern>WHAT IS YOUR NAME</pattern>
+<template>Mr. Lonely is my name</template>
+</category>
+<category><pattern># <SET>DANGER</SET></pattern>
+<template>Do you feel like this often?</template>
+</category>
+<category><pattern>YES</pattern>
+<template>You should reach out and talk to a real person, they can help you more
+                            Your local number is xxx-xxx-xxxx</template>
+</category>
+<category><pattern>NO</pattern>
+<template>That is good, if you feel this way often you should reach out.</template>
 </category>
 <category><pattern>TESTING</pattern>
 <template>TEST</template>

@@ -1,0 +1,16 @@
+0,LONELYBOT3000,*,*,It is wonderful to see you#Comma What's your name?,safety.aiml
+0,MY NAME IS *,*,*,Well then <star/>#Comma how have you been feeling lately?<think><set name="firstname"><star/></set></think>,safety.aiml
+0,<SET>POSITIVE</SET>,*,*,I am very glad to hear that! What would you like to talk about?,safety.aiml
+0,<SET>NEGATIVE</SET>,*,*,I am sorry to hear that#Comma before we continue#Comma do you feel you are a danger to yourself or anyone around you?,safety.aiml
+0,YES,_ DANGER _,*,We recommend you contact emergency services#Comma the number is: xxx,safety.aiml
+0,NO,_ EMERGENCY _,*,We strongly urge you to.,safety.aiml
+0,NO,_ DANGER _,*,I am glad \n What would you like to talk about?,safety.aiml
+0,*,_ TALK ABOUT,*,CHATTIME: <get name="firstname"/>: <star/>,safety.aiml
+0,GETNAME,*,*,<get name="firstname"/>,safety.aiml
+0,WHAT IS MY NAME,*,*,<get name="firstname"/>,safety.aiml
+0,HOW ARE YOU,*,*,I am well#Comma How are you,safety.aiml
+0,HOW OLD ARE YOU,*,*,Roughly 1 month,safety.aiml
+0,WHAT IS YOUR NAME,*,*,Mr. Lonely is my name,safety.aiml
+0,# <SET>DANGER</SET>,*,*,Do you feel like this often?,safety.aiml
+0,YES,*,*,You should reach out and talk to a real person#Comma they can help you more#Newline                            Your local number is xxx-xxx-xxxx,safety.aiml
+0,NO,*,*,That is good#Comma if you feel this way often you should reach out.,safety.aiml

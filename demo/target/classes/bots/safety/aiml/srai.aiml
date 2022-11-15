@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: srai.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: November 14, 2022 -->
+<!--  -->
+<!-- This AIML file is part of the SAFETY 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SAFETY brain is Copyright &copy; 2022 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SAFETY brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>I AM *</pattern>
+<template><srai>My name is <star/></srai></template>
+</category>
+<category><pattern>THEY CALL ME *</pattern>
+<template><srai>My name is <star/></srai></template>
+</category>
+<category><pattern><SET>NAME</SET></pattern>
+<template><srai>My name is <star/></srai></template>
+</category>
+<category><pattern>YEAH</pattern>
+    <template><srai>YES</srai></template>
+    </category>
+    <category><pattern>YUP</pattern>
+        <template><srai>YES</srai></template>
+        </category>
+        <category><pattern>YOU BET</pattern>
+            <template><srai>YES</srai></template>
+            </category>
+            <category><pattern>Nah</pattern>
+                <template><srai>NO</srai></template>
+                </category>
+                <category><pattern>NOPE</pattern>
+                    <template><srai>NO</srai></template>
+                    </category>
+</aiml>

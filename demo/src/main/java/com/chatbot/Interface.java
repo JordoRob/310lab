@@ -2,7 +2,12 @@ package com.chatbot;
 
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
+
+import javax.speech.EngineException;
+import javax.speech.EngineStateError;
 import javax.swing.*;
+import javax.swing.text.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -20,9 +25,13 @@ public class Interface implements ActionListener {
     JTextField tf = new JTextField(20); // accepts upto 10 characters
     JButton send = new JButton("Send");
     JButton switchbutton = new JButton("Switch");
+    JToggleButton mute = new JToggleButton("Narrator", false);
     // Text Area at the Center
-    JTextArea ta = new JTextArea();
+    JTextPane ta = new JTextPane();
+    StyledDocument doc = ta.getStyledDocument();
     JScrollPane scrollPane = new JScrollPane(ta);
+    boolean narrator = false;
+    Reader kevin=new Reader();
     // Adding Components to the frame
 
     public Interface(Bot bot, Chat chatSession) {
@@ -35,13 +44,23 @@ public class Interface implements ActionListener {
         panel.add(tf);
         panel.add(send);
         panel.add(switchbutton);
+        panel.add(mute);
         ta.setEditable(false);
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
         frame.setVisible(true);
         addListener(bot, chatSession, this, 0);
-        
+        ItemListener itemListener = new ItemListener() {
+            public void itemStateChanged(ItemEvent itemEvent){
+                if(narrator){
+                narrator=false;
+                }else{
+                narrator=true;
+                }
+            }
+        };
+        mute.addItemListener(itemListener);
     }
     public static boolean testInterface(){
         try {
@@ -86,8 +105,40 @@ public class Interface implements ActionListener {
         // TODO Auto-generated method stub
 
     }
-    public void setText(String a){ //getters and setters
-        ta.append(a);
+    public void setText(String a, int x) throws BadLocationException{ //getters and setters
+        SimpleAttributeSet usertext = new SimpleAttributeSet();
+        StyleConstants.setBold(usertext, true);
+        StyleConstants.setForeground(usertext, Color.BLUE);
+
+        SimpleAttributeSet bot = new SimpleAttributeSet();
+        StyleConstants.setForeground(bot, Color.RED);
+        StyleConstants.setBold(bot, true);
+        
+        SimpleAttributeSet normal = new SimpleAttributeSet();
+        StyleConstants.setForeground(normal, Color.BLACK);
+        StyleConstants.setBold(normal,false);
+
+        SimpleAttributeSet switched = new SimpleAttributeSet();
+        StyleConstants.setForeground(switched, Color.BLACK);
+        StyleConstants.setFontSize(switched, 18);
+        StyleConstants.setItalic(switched, true);
+
+
+        
+        String lonely = "Mr.Lonely: ";
+        String user = "You: ";
+        if(x==0){
+            doc.insertString(doc.getLength(), user, usertext );
+            doc.insertString(doc.getLength(),a,normal);
+        } else if(x==1){
+            doc.insertString(doc.getLength(), lonely , bot );
+            doc.insertString(doc.getLength(),a,normal);
+        } else if(x==2){
+            doc.insertString(doc.getLength(),a,switched);
+        }
+        if(narrator)
+        kevin.read(a, x);
+        
     }
     public String getText(){
         return tf.getText();
@@ -111,5 +162,7 @@ public class Interface implements ActionListener {
         send.addActionListener(text);
         switchbutton.addActionListener(change);
     }
+    
+
     }
 
