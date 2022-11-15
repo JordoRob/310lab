@@ -35,7 +35,5 @@ public class Reader{
         e.printStackTrace();}
 
     }
-    public void close() throws EngineException, EngineStateError{
-        synthesizer.deallocate();
     }
-}
+

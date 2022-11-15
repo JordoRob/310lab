@@ -31,7 +31,7 @@ public class Interface implements ActionListener {
     StyledDocument doc = ta.getStyledDocument();
     JScrollPane scrollPane = new JScrollPane(ta);
     boolean narrator = false;
-    Reader kevin;
+    Reader kevin=new Reader();
     // Adding Components to the frame
 
     public Interface(Bot bot, Chat chatSession) {
@@ -55,18 +55,8 @@ public class Interface implements ActionListener {
             public void itemStateChanged(ItemEvent itemEvent){
                 if(narrator){
                 narrator=false;
-                try {
-                    kevin.close();
-                } catch (EngineException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (EngineStateError e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
                 }else{
                 narrator=true;
-                kevin=new Reader();
                 }
             }
         };
