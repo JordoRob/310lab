@@ -2,6 +2,9 @@ package com.chatbot;
 
 import java.awt.*;
 import java.io.File;
+
+import javax.swing.text.BadLocationException;
+
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
 import org.alicebot.ab.MagicBooleans;
@@ -14,7 +17,8 @@ public class Lonely {
     static Interface gui;
     public static Bot bot;
     public static Chat chatSession;
-    public static void main(String args[]) { // main creates the bot and creates the interface session
+
+    public static void main(String args[]) throws BadLocationException{ // main creates the bot and creates the interface session
         resourcesPath = getResourcesPath();
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -22,7 +26,7 @@ public class Lonely {
         chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);
-        gui.setText("Mr.Lonely: " + chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n");
+        gui.setText(chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n", 1);
 
     }
 
@@ -38,24 +42,25 @@ public class Lonely {
         return resourcesPath;
     }
 
-    public void newBot(String name, String message) { // creates a new bot for the switchover from safety to regular.
-                                                      // Could be expanded upon if necessary
-        bot = new Bot(name, resourcesPath);
-        chatSession = new Chat(bot);
-        gui.addListener(bot, chatSession, gui, 1);
+    public void newBot(String name, String message) throws BadLocationException { // creates a new bot for the
+                                                                                  // switchover from safety to regular.
+        // Could be expanded upon if necessary
+        Bot temp = new Bot(name, resourcesPath);
+        Chat chatTemp = new Chat(temp);
+        gui.addListener(temp, chatTemp, gui, 1);
 
         if (name == "super") {
-            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n");
+            gui.setText("You have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
             if (message.contains("CHATTIME")) {
                 String[] nice = message.split(":");
-                chatSession.multisentenceRespond("My name is " + nice[1]);
-                gui.setText("Mr.Lonely: " + chatSession.multisentenceRespond("I like" + nice[2])+"\n\n");
+                chatTemp.multisentenceRespond(nice[0] + " " + nice[1]);
+                gui.setText(chatTemp.multisentenceRespond("I like" + nice[2]), 1);
             } else
-                System.out.println(chatSession.multisentenceRespond("My name is " + message));
+                chatTemp.multisentenceRespond("My name is " + message);
         }
         if (name == "safety") {
-            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n");
-            chatSession.multisentenceRespond("My name is " + message);
+            gui.setText("You have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
+            chatTemp.multisentenceRespond("My name is " + message);
         }
     }
 }
