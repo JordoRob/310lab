@@ -42,10 +42,10 @@ public int button;
 					String response = chatSession.multisentenceRespond(request); //Sends user message to the chatsession/bot and gets a response
 					if(response.contains("CHATTIME")){ //This is the switch that flips from safety oriented questions to the default AIML chatbot
 						newBot("super", response);
-					}else if(response.contains("WIKI")){
-						response = response.replace("WIKI ","");
+					}else if(response.contains("WIKI")){ //Previously the chatbot would send a random message in response to an unknown string but I modified it to send this.
+						response = response.replace("WIKI ",""); //Trim out the "WIKI" part of the chatbot message
 						gui.setText("I don't know what that is! According to wikipedia:", 1);
-						gui.setText(info.getDetail(response), 1);
+						gui.setText(info.getDetail(response), 1); //calls the new getDetail method to return information on the item
 					}
 					else{ //This replaces all incorrect symbols
 					while (response.contains("&lt;"))

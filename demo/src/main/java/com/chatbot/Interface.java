@@ -40,6 +40,17 @@ public class Interface implements ActionListener {
     Reader kevin=new Reader(); //Creates a narrator
     Translate translator = new Translate();
     public String target="none";
+     SimpleAttributeSet usertext = new SimpleAttributeSet();
+       
+
+        SimpleAttributeSet bottext = new SimpleAttributeSet();
+        
+        
+        SimpleAttributeSet normal = new SimpleAttributeSet();
+        
+
+        SimpleAttributeSet switched = new SimpleAttributeSet();
+        
     // Adding Components to the frame
 
     public Interface(Bot bot, Chat chatSession) {
@@ -70,12 +81,24 @@ public class Interface implements ActionListener {
         frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
         frame.setVisible(true);
         translator.init();
-        m30.setName("none");
+        m30.setName("none"); //translation buttons with their corresponding language tags for google
         m31.setName("fr");
         m32.setName("es");
         m33.setName("ja");
         m34.setName("la");
         mute.setName("nr");
+        StyleConstants.setBold(usertext, true);
+        StyleConstants.setForeground(usertext, Color.BLUE);
+
+        StyleConstants.setForeground(bottext, Color.RED);
+        StyleConstants.setBold(bottext, true);
+
+        StyleConstants.setForeground(normal, Color.BLACK);
+        StyleConstants.setBold(normal,false);
+
+        StyleConstants.setForeground(switched, Color.BLACK);
+        StyleConstants.setFontSize(switched, 18);
+        StyleConstants.setItalic(switched, true);
         addListener(bot, chatSession, this, 0);
         ItemListener speak = new ItemListener() { //itemlistener for narrator button
             public void itemStateChanged(ItemEvent e){
@@ -141,22 +164,7 @@ public class Interface implements ActionListener {
     }
     public void setText(String b, int x) throws BadLocationException{ //Font formatting
         String a = b+ "\n\n";
-        SimpleAttributeSet usertext = new SimpleAttributeSet();
-        StyleConstants.setBold(usertext, true);
-        StyleConstants.setForeground(usertext, Color.BLUE);
-
-        SimpleAttributeSet bot = new SimpleAttributeSet();
-        StyleConstants.setForeground(bot, Color.RED);
-        StyleConstants.setBold(bot, true);
-        
-        SimpleAttributeSet normal = new SimpleAttributeSet();
-        StyleConstants.setForeground(normal, Color.BLACK);
-        StyleConstants.setBold(normal,false);
-
-        SimpleAttributeSet switched = new SimpleAttributeSet();
-        StyleConstants.setForeground(switched, Color.BLACK);
-        StyleConstants.setFontSize(switched, 18);
-        StyleConstants.setItalic(switched, true);
+ 
 
 
         
@@ -166,10 +174,10 @@ public class Interface implements ActionListener {
             doc.insertString(doc.getLength(), user, usertext );
             doc.insertString(doc.getLength(),a,normal);
         } else if(x==1){
-            doc.insertString(doc.getLength(), lonely , bot );
+            doc.insertString(doc.getLength(), lonely , bottext );
             doc.insertString(doc.getLength(),a,normal);
-            if(target!="none"){
-                doc.insertString(doc.getLength(), lonely , bot );
+            if(target!="none"){ //if a translation option is selected, send this aswell.
+                doc.insertString(doc.getLength(), lonely , bottext );
             try {
                 doc.insertString(doc.getLength(),translator.translateText(target, b)+"\n\n",normal);
             } catch (IOException e) {
