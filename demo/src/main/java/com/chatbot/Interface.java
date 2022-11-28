@@ -8,7 +8,6 @@ import javax.swing.text.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 
 public class Interface implements ActionListener {
@@ -159,7 +158,6 @@ public class Interface implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
 
     }
     public void setText(String b, int x) throws BadLocationException{ //Font formatting
@@ -178,14 +176,9 @@ public class Interface implements ActionListener {
             doc.insertString(doc.getLength(),a,normal);
             if(target!="none"){ //if a translation option is selected, send this aswell.
                 doc.insertString(doc.getLength(), lonely , bottext );
-            try {
                 doc.insertString(doc.getLength(),translator.translateText(target, b)+"\n\n",normal);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             }
-            }
-        } else if(x==2){
+            } else if(x==2){
             doc.insertString(doc.getLength(),a,switched);
         }
         if(narrator)
