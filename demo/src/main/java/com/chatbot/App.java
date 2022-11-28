@@ -24,7 +24,7 @@ public int button;
 		
 		textLine = gui.getText();
 		try {
-			gui.setText(textLine + "\n\n", 0);
+			gui.setText(textLine, 0);
 		
 				if ((textLine == null) || (textLine.length() < 1)) //Checks for null or incorrect input
 					textLine = MagicStrings.null_input;
@@ -48,7 +48,7 @@ public int button;
 						response = response.replace("&lt;", "<");
 					while (response.contains("&gt;"))
 						response = response.replace("&gt;", ">");
-                        gui.setText(response + "\n\n", 1); //sends text to the ui
+                        gui.setText(response, 1); //sends text to the ui
 					}
 				gui.tf.setText("");} //resets the typing textbox
 			} catch (BadLocationException e1) {

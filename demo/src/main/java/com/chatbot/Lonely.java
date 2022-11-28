@@ -1,6 +1,7 @@
 package com.chatbot;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.text.BadLocationException;
 
@@ -17,7 +18,8 @@ public class Lonely {
     public static Bot bot;
     public static Chat chatSession;
 
-    public static void main(String args[]) throws BadLocationException{ // main creates the bot and creates the interface session
+
+    public static void main(String args[]) throws BadLocationException, IOException{ // main creates the bot and creates the interface session
         //System.out.println(newBotTest());
 
         resourcesPath = getResourcesPath();
@@ -27,7 +29,8 @@ public class Lonely {
         chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);
-        gui.setText(chatSession.multisentenceRespond("LONELYBOT3000") + "\n\n", 1);}
+
+        gui.setText(chatSession.multisentenceRespond("LONELYBOT3000"), 1);}
 
     public static boolean testResponse() {
         resourcesPath = getResourcesPath();
@@ -62,7 +65,7 @@ public class Lonely {
         gui.addListener(temp, chatTemp, gui, 1);
 
         if (name == "super") {
-            gui.setText("\nYou have switched to conversation mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to conversation mode, to switch back press the 'switch' button", 2);
             if (message.contains("CHATTIME")) {
                 String[] nice = message.split(":");
                 chatTemp.multisentenceRespond(nice[0] + " " + nice[1]); //Sends the bot the users name
@@ -71,7 +74,7 @@ public class Lonely {
                 chatTemp.multisentenceRespond("My name is " + message);
         }
         if (name == "safety") {
-            gui.setText("\nYou have switched to safety mode, to switch back press the 'switch' button\n\n", 2);
+            gui.setText("\nYou have switched to safety mode, to switch back press the 'switch' button", 2);
             chatTemp.multisentenceRespond("My name is " + message);
         }
     }
