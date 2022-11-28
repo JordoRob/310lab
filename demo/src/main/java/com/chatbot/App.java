@@ -42,6 +42,10 @@ public int button;
 					String response = chatSession.multisentenceRespond(request); //Sends user message to the chatsession/bot and gets a response
 					if(response.contains("CHATTIME")){ //This is the switch that flips from safety oriented questions to the default AIML chatbot
 						newBot("super", response);
+					}else if(response.contains("WIKI")){
+						response = response.replace("WIKI ","");
+						gui.setText("I don't know what that is! According to wikipedia:", 1);
+						gui.setText(info.getDetail(response), 1);
 					}
 					else{ //This replaces all incorrect symbols
 					while (response.contains("&lt;"))

@@ -17,6 +17,7 @@ public class Lonely {
     static Interface gui;
     public static Bot bot;
     public static Chat chatSession;
+    public static Wikisearch info;
 
 
     public static void main(String args[]) throws BadLocationException, IOException{ // main creates the bot and creates the interface session
@@ -26,6 +27,7 @@ public class Lonely {
         System.out.println(resourcesPath);
         MagicBooleans.trace_mode = TRACE_MODE;
         bot = new Bot("safety", resourcesPath);
+        info = new Wikisearch();
         chatSession = new Chat(bot);
         bot.brain.nodeStats();
         gui = new Interface(bot, chatSession);

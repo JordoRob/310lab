@@ -30,6 +30,14 @@
 </dependencyManagement>
 
 <dependencies>
+
+<dependency>
+    <groupId>org.fastily</groupId>
+    <artifactId>jwiki</artifactId>
+    <version>1.9.0</version>
+</dependency>
+
+
   <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-translate</artifactId>
